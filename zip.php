@@ -1,35 +1,11 @@
 <?php
  if(isset($_GET['signature'])){
 ini_set('max_execution_time', 0);
-function realFilename($url){
-   $headers      = get_headers($url, 1);
-   $headers      = array_change_key_case($headers, CASE_LOWER);
-   $realfilename = '';
- 
-   if(isset($headers['content-disposition'])) 
-      {
-         $tmp_name = explode('=', $headers['content-disposition']);
-         if($tmp_name[1]) 
-            {
-               $realfilename = trim($tmp_name[1], '";\'');
-            }
-      } 
-   else  
-      { 
-         $info         = pathinfo($url);
-         if(isset($info['extension']))
-            {
-               $realfilename = $info['filename'].'.'.$info['extension']; 
-            }
-      } 
- 
-  return $realfilename;
-}
 $useragent = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36";
 $v = base64_decode($_GET['signature']);
 parse_str($v);
 //$v = json_decode($v,true);
-$title = realFilename($v);
+$title = 'dd';
 parse_str($title);
 //$v = $v['link'];
 header('Content-Type: application/octet-stream');
