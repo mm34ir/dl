@@ -1,8 +1,5 @@
 USER root
-FROM php:7.2-fpm
-
-# Set working directory
-WORKDIR /var/www
+FROM php:7.2
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -31,4 +28,3 @@ USER www
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 80
-CMD ["php-fpm"]
